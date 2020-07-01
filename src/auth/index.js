@@ -52,3 +52,16 @@ export const signout = next => {
             .catch(err => console.log(err));
     }
 };
+
+export const isAuthenticated = () => {
+    // ensure there is a jwt
+    if(typeof window == "undefined"){
+        return false;
+    }
+    //parse jwt to JSON
+    if(localStorage.getItem("jwt")){
+        return JSON.parse(localStorage.getItem("jwt"))
+    } else {
+        return false;
+    }
+}
