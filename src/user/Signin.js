@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import {signin} from "../auth";
+import {signin, authenticate} from "../auth";
 import { Redirect } from "react-router-dom";
 import Layout from "../core/Layout";
 
 const Signin = () => {
     const [values, setValues] = useState({
-        email: "",
-        password: "",
+        email: "kash@hotboys.com",
+        password: "876kash",
         error: false,
         loading: false,
         redirectToReferrer: false
@@ -28,10 +28,12 @@ const Signin = () => {
                 if(data.error){
                     setValues({...values, error: data.error, loading: false})
                 }else {
-                    setValues({
-                        ...values,
-                        redirectToReferrer: true
-                    })
+                    authenticate(data, () => {
+                        setValues({
+                            ...values,
+                            redirectToReferrer: true
+                        });
+                    });
                 }
             })
     };
@@ -80,8 +82,8 @@ const Signin = () => {
     }
 
     return (
-        <Layout title= "Sign Up"
-                description="Join the CAWM Fam"
+        <Layout title= "Sign In"
+                description="Sign in the CAWM Fam"
                 className="container col-md-8 offset-md-2">
 
             {showLoading()}
