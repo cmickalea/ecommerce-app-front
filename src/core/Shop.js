@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from "./Layout";
-import { getCategories } from "./apiCore";
+import { getCategories, getProducts } from "./apiCore";
+import Checkbox from "./Checkbox";
 import Card from "./Card";
 
 const Shop = () => {
@@ -20,7 +21,7 @@ const Shop = () => {
     }
 
     useEffect(() => {
-        init()
+        init();
     }, []);
 
 
@@ -31,11 +32,17 @@ const Shop = () => {
         >
             <div className="row">
                 <div className="col-4">
-                    {JSON.stringify(categories)};
+                    <h4>categories</h4>
+                    <ul>
+                        <Checkbox categories={categories} />
+                    </ul>
                 </div>
 
                 <div className="col-8">
-                    right
+                    <h2 className="mb-4">SHOWROOM</h2>
+                    <div className="col-6 mb-3">
+                        right
+                    </div>
                 </div>
             </div>
 
