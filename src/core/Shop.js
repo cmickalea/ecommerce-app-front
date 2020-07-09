@@ -14,7 +14,7 @@ const Shop = () => {
     const [error, setError] = useState(false);
     const [limit, setLimit] = useState(6);
     const [skip, setSkip] = useState(0);
-    const [filteredResults, setFilteredResults] = useState(0);
+    const [filteredResults, setFilteredResults] = useState([]);
 
     const init = () => {
         getCategories().then(data => {
@@ -32,14 +32,14 @@ const Shop = () => {
             if(data.error){
                 setError(data.error);
             } else {
-                setFilteredResults(data);
+                setFilteredResults(data.data);
             }
         })
     };
 
     useEffect(() => {
-        loadFilteredResults(skip, limit, myFilters.filters);
         init();
+        loadFilteredResults(skip, limit, myFilters.filters);
     }, []);
 
     const handleFilters = (filters, filteredBy) => {
@@ -92,10 +92,9 @@ const Shop = () => {
                 <div className="col-8">
                     <h2 className="mb-4">SHOWROOM</h2>
                     <div className="row">
-                        {JSON.stringify(filteredResults)}
-                        {/*{filteredResults.map((product, i) => (*/}
-                        {/*    <Card key={i} product={product}/>*/}
-                        {/*    ))}*/}
+                        {filteredResults.map((product, i) => (
+                            <Card key={i} product={product} />
+                        ))}
                     </div>
                 </div>
             </div>
