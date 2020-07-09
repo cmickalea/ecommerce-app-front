@@ -24,3 +24,5 @@ const Radiobox = ({ prices, handleFilters }) => {
 }
 
 export default Radiobox;
+
+
