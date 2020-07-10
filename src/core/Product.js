@@ -23,13 +23,17 @@ const Product = (props) => {
     }, []);
 
     return (
-        <Layout title="Home Page"
-                description="CAWM APP"
+        <Layout title={product && product.name}
+                description={product && product.description }
                 className="container-fluid">
 
             <h2 className="mb-4">Single Product</h2>
             <div className="row">
-                {JSON.stringify(product)}
+                {
+                    product && product.description && (
+                        <Card product={product} showViewProductButton={false} />
+                    )
+                }
             </div>
         </Layout>
     )
