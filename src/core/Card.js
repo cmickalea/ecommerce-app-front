@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import ShowImage from "./ShowImage";
 import { addItem} from "./CartHelper";
 
-const Card = ({ product, showViewProductButton = true, showAddToCartButton = true }) => {
+const Card = ({ product, showViewProductButton = true, showAddToCartButton = true, cartUpdate = true }) => {
     const [redirect, setRedirect] = useState(false);
 
     const showViewButton = (showViewProductButton) => {
