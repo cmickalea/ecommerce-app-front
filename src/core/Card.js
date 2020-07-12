@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import ShowImage from "./ShowImage";
 import { addItem} from "./CartHelper";
 
-const Card = ({ product, showViewProductButton = true }) => {
+const Card = ({ product, showViewProductButton = true, showAddToCartButton = true }) => {
     const [redirect, setRedirect] = useState(false);
 
     const showViewButton = (showViewProductButton) => {
@@ -30,6 +30,14 @@ const Card = ({ product, showViewProductButton = true }) => {
         }
     }
 
+    const showAddToCart = (showAddToCartButton) => {
+        return  showAddToCartButton && (
+            <button onClick={addToCart} className="btn btn-outline-warning mt-2 mb-2">
+                Add to Cart
+            </button>
+        )
+    }
+
 
     return (
         // <div className={"col-4 mb-3"}>
@@ -43,9 +51,7 @@ const Card = ({ product, showViewProductButton = true }) => {
                     <p>{product.description.substring(0, 100)}</p>
                     <p>${product.price}</p>
                     {showViewButton(showViewProductButton)}
-                    <button onClick={addToCart} className="btn btn-outline-warning mt-2 mb-2">
-                        Add to Cart
-                    </button>
+                    {showAddToCart(showAddToCartButton)}
                 </div>
             </div>
         // </div>
