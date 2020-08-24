@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import { Link, Redirect } from "react-router-dom";
 import ShowImage from "./ShowImage";
 import { addItem, updateItem, removeItem } from "./CartHelper";
-
-const Card = ({
+import "./cartCard.module.css";
+const CartCard = ({
                   product,
                   showViewProductButton = true,
                   showAddToCartButton = true,
@@ -11,7 +11,7 @@ const Card = ({
                   showRemoveProductButton = false,
                   setRun = f => f, //default value of function
                   run = undefined
-}) => {
+  }) => {
     const [redirect, setRedirect] = useState(false);
     const [count, setCount] = useState(product.count);
 
@@ -89,27 +89,25 @@ const Card = ({
             </div>
     }
 
-
     return (
-        // <div className={"col-4 mb-3"}>
-            <div className="card">
-                <div className="card-header">
-                    {product.name}
-                </div>
-                <div className="card-body">
-                    {shouldRedirect(redirect)}
-                    <ShowImage item={product} url="products" />
-                    <p>{product.description.substring(0, 100)}</p>
-                    <p>${product.price}</p>
-                    {showViewButton(showViewProductButton)}
-                    {showAddToCart(showAddToCartButton)}
-                    {showRemoveButton(showRemoveProductButton)}
-                    {showCartUpdateOptions(cartUpdate)}
-                </div>
+      <div class="card mb-4 p-2">
+        <div className="row">
+          <div class="col-4">
+            <ShowImage item={product} url="products" />
+            {showViewButton(showViewProductButton)}
+          </div>
+          <div className="col-md-8 px-3">
+            <div className="card-block px-3">
+              <p style={{fontFamily:"alata", fontSize: "20px"}}>{product.description.substring(0, 100)}</p>
+              <p style={{fontFamily:"alata", fontSize: "20px"}}>${product.price}</p>
+              {showAddToCart(showAddToCartButton)}
+              {showRemoveButton(showRemoveProductButton)}
+              {showCartUpdateOptions(cartUpdate)}
             </div>
-  
-        // </div>
+          </div>
+        </div>
+      </div>
     )
 }
 
-export default Card;
+export default CartCard;

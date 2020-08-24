@@ -94,13 +94,13 @@ const Shop = () => {
     }
 
     return (
-        <Layout title= "Home Page"
-                description="Get dripped CAWMly"
-                className="container-fluid"
-        >
-            <div className="row">
-                <div className="col-4">
-                    <h4>categories</h4>
+        // <Layout title= "Home Page"
+        //         description="Get dripped CAWMly"
+        //         className="container-fluid"
+        // >
+            <div className="row ml-2 mr-4 mt-4">
+                <div className="col-2 mr-4">
+                    <h4>Categories</h4>
                     <ul>
                         <Checkbox
                             categories={categories}
@@ -118,7 +118,7 @@ const Shop = () => {
 
                 <div className="col-8">
                     <h2 className="mb-4">SHOWROOM</h2>
-                    <div className="row">
+                    <div className="row ml-4">
                         {filteredResults.map((product, i) => (
                             <div key={i} className="col-4 mb-3">
                                 <Card product={product} />
@@ -130,9 +130,7 @@ const Shop = () => {
                     {loadMoreButton()}
                 </div>
             </div>
-        </Layout>
     )
 }
 
 export default Shop;
-

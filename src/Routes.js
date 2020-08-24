@@ -8,11 +8,17 @@ import PrivateRoute from "./auth/PrivateRoute";
 import Dashboard from "./user/UserDashboard";
 import AdminDashboard from "./user/AdminDashboard";
 import AdminRoute from "./auth/AdminRoute";
+import Orders from "./admin/Orders";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
 import Shop from "./core/Shop";
 import Product from "./core/Product";
 import Cart from "./core/Cart";
+import Payment from "./core/Payment";
+import Profile from "./user/Profile";
+import ManageProducts from "./admin/ManageProducts";
+import UpdateProduct from "./admin/UpdateProduct";
+
 
 const Routes = () => {
     return (
@@ -22,6 +28,7 @@ const Routes = () => {
                 <Route path="/" exact component={Home}/>
                 <Route path="/shop" exact component={Shop}/>
                 <Route path="/signin" exact component={Signin}/>
+                <Route path="/create-payment-intent" exact component={Payment}/>
                 <Route path="/signup" exact component={Signup}/>
                 <PrivateRoute path="/user/dashboard" exact component={Dashboard}/>
                 <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
@@ -29,6 +36,10 @@ const Routes = () => {
                 <AdminRoute path="/create/product" exact component={AddProduct}/>
                 <Route path="/product/:productId" exact component={Product}/>
                 <Route path="/cart" exact component={Cart}/>
+                <AdminRoute path="/admin/orders" exact component={Orders}/>
+                <PrivateRoute path="/profile/:userId" exact component={Profile}/>
+                <AdminRoute path="/admin/products" exact component={ManageProducts}/>
+                <AdminRoute path="/admin/product/update/:productId" exact component={UpdateProduct}/>
             </Switch>
         </BrowserRouter>
     )

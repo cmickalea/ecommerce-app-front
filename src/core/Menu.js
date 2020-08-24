@@ -7,11 +7,11 @@ import "../style.css";
 const isActive = (history, path) => {
     if(history.location.pathname === path){
         return {
-            color: "#ff9900"
+            color: "#333"
         };
     } else {
         return {
-            color: "#fff"
+            color: "#856600"
         };
     }
 };
@@ -19,7 +19,7 @@ const isActive = (history, path) => {
 const Menu = ({history}) => {
   return (
       <div>
-          <ul className="nav nav-tabs bg-primary">
+          <ul className="nav nav-tabs navbar-light bg-light p-2">
               <li className="nav-item">
                   <Link className="nav-link" style={isActive(history, "/")} to="/">Home</Link>
               </li>
@@ -65,7 +65,7 @@ const Menu = ({history}) => {
               {isAuthenticated() && (
                   <li>
                   <span className="nav-link"
-                        style={{cursor: "pointer", color:"#fff"}}
+                        style={{cursor: "pointer", color:"#856600"}}
                         onClick={() =>
                             signout(() => {
                                 history.push("/");

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
 import Layout from "./Layout";
 import { getCart } from "./CartHelper";
-import Card from "./Card";
+import CartCard from "./CartCard";
 import Checkout from "./Checkout";
 
 const Cart = () => {
@@ -16,10 +16,8 @@ const Cart = () => {
     const showItems = items => {
         return (
             <div>
-                <h2>Your cart has {`${items.length}`} items</h2>
-                <hr/>
                 {items.map((product, i) => (
-                    <Card
+                    <CartCard
                         key={i}
                         product={product}
                         showAddToCartButton={false}
@@ -38,19 +36,20 @@ const Cart = () => {
     )
 
     return (
-        <Layout title="Shopping Cart" description="Manage Your Cart" className="container-fluid">
-            <div className="row">
-                <div className="col-6">
-                    {items.length > 0 ? showItems(items) : emptyCartMessage()}
-                </div>
-
-                <div className="col-6">
-                    <h2 className="mb-4"> Checkout</h2>
-                    <hr/>
-                    <Checkout products={items}/>
-                </div>
+      <div className="row" style={{width: "100%"}}>
+        <div className="col-6">
+          <h2 style={{margin: "4% 0 4% 7%"}}>Your cart has {`${items.length}`} items</h2>
+        </div>
+        <div className="row">
+          <div className="col-4" style={{marginLeft: "4%"}}>
+            {items.length > 0 ? showItems(items) : emptyCartMessage()}
             </div>
-        </Layout>
+          <div className="col-2" style={{marginLeft: "4%"}}>
+            <Checkout products={items}/>
+            <hr />
+          </div>
+        </div>
+      </div>
     )
 }
 

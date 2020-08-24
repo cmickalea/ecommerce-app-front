@@ -34,26 +34,10 @@ const Home = () => {
     }, [])
 
     return (
-        <Layout title= "Home Page" description="CAWM APP" className="container-fluid">
-            <h2 className="mb-4">Best Sellers</h2>
-            <div className="row">
-                {productsBySell.map((product, i) => (
-                    <div key={i} className="col-4 mb-3">
-                        <Card product={product}/>
-                    </div>
-                    ))}
-            </div>
-
-            <h2 className="mb-4">New Arrivals</h2>
-            <div className="row">
-                {productsByArrival.map((product, i) => (
-                    <div key={i} className="col-4 mb-3">
-                        <Card product={product}/>
-                    </div>
-                    ))}
-            </div>
-
-        </Layout>
+      <div className="col-8 ml-4 mt-4 p-4" style={{backgroundColor: "#856600"}}>
+        <h1 style={{fontSize: "100px"}}>STAY C.A.W.M</h1>
+        <h4 style={{ fontSize: "50px"}}> Children Always Want More</h4>
+      </div>
     )
 }
 
