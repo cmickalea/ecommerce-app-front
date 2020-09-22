@@ -5,8 +5,8 @@ import Layout from "../core/Layout";
 
 const Signin = () => {
     const [values, setValues] = useState({
-        email: "kash@hotboys.com",
-        password: "876kash",
+        email: "",
+        password: "",
         error: false,
         loading: false,
         redirectToReferrer: false
